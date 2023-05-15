@@ -21,6 +21,7 @@ public class RNNotification {
     private static final String TAG = "RNAndroidNotificationListener";
     
     protected String app;
+    protected int id;
     protected String title;
     protected String titleBig;
     protected String text;
@@ -41,6 +42,7 @@ public class RNNotification {
         if (notification != null && notification.extras != null) {
             String packageName = sbn.getPackageName();
 
+            this.id = sbn.getId();
             this.time = Long.toString(sbn.getPostTime());
             this.app = TextUtils.isEmpty(packageName) ? "Unknown App" : packageName;
             this.title = this.getPropertySafely(notification, Notification.EXTRA_TITLE);
